@@ -79,6 +79,17 @@ app = Flask(__name__)
 
 blockchain = Blockchain()
 
+@app.route('/', methods=['GET'])
+def main():
+    response = {
+        'minar un blocke': 'mine_block',
+        'obtener la blockchain': 'get_chain',
+        'ver si la chain es valida': 'is_chain_valid',
+        'ver un blocke concreto': 'block_by_index'
+    }
+    return jsonify(response)
+
+
 @app.route('/mine_block', methods=['GET'])
 def mine_block():
     # objetenmos los datos necesarios para crear el bloque
